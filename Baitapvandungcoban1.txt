@@ -1,0 +1,35 @@
+BƯỚC 1: PHÂN TÍCH LỖI (3 PHẦN VĂN BẢN THỪA THÃI TRONG CÂU TRẢ LỜI CŨ)
+Khi chạy câu lệnh gốc ("Hãy giải thích ngắn gọn các nội dung của CREATE, Few-shot, Ép định dạng JSON/Table"), vì thiếu các ràng buộc định dạng (Formatting Constraints) và điều kiện phủ định (Negative Constraints), AI tự động sinh ra 3 phần văn bản dư thừa gây mất thời gian cắt gọt khi dán vào báo cáo:
+1. Lời chào hỏi và câu dẫn mở đầu (Introductory Fluff): Các câu xã giao như "Chào bạn! Dưới đây là phần giải thích ngắn gọn về các khái niệm trong kỹ thuật Prompting mà bạn đang tìm kiếm:".
+2. Đoạn giải thích lý thuyết lan man, rào trước đón sau: Những câu dẫn chuyển ý giữa các mục hoặc định nghĩa dài dòng mang tính hàn lâm thay vì đi thẳng vào bản chất công cụ.
+3. Lời kết và câu hỏi gợi mở cuối bài (Closing Remarks): Các đoạn tóm tắt lặp lại ý hoặc câu mời gọi tương tác như "Hy vọng những thông tin trên hữu ích cho việc học tập của bạn. Nếu bạn cần ví dụ cụ thể hơn, hãy cho tôi biết nhé!".
+BƯỚC 2: VIẾT PROMPT TỐI ƯU (CÓ RÀNG BUỘC ĐỊNH DẠNG & TỪ KHÓA CẤM)
+[BẮT ĐẦU NỘI DUNG PROMPT TỐI ƯU]
+ ROLE
+Bạn là một chuyên gia đào tạo về Kỹ thuật Prompt (Prompt Engineering), chuyên biên soạn tài liệu tóm tắt cô đọng.
+ TASK
+Giải thích cốt lõi 3 khái niệm sau để đưa trực tiếp vào báo cáo học tập:
+1. Khung cấu trúc CREATE
+2. Kỹ thuật Few-shot Prompting
+3. Kỹ thuật Ép định dạng đầu ra (JSON/Table)
+ FORMATTING & CONSTRAINTS (Bắt buộc)
+- Định dạng trình bày: Bắt buộc sử dụng danh sách gạch đầu dòng (bullet points) phân cấp rõ ràng.
+- Độ dài: Mỗi khái niệm giải thích tối đa 3 gạch đầu dòng ngắn gọn, mỗi ý không quá 20 từ, đi thẳng vào định nghĩa và công dụng thực tế.
+- Từ khóa cấm (Negative Constraints): 
+  + TUYỆT ĐỐI KHÔNG viết lời chào hỏi, câu dẫn nhập mở đầu (Ví dụ: cấm dùng "Chào bạn", "Dưới đây là...").
+  + TUYỆT ĐỐI KHÔNG viết đoạn tóm tắt kết bài, lời chúc hay câu hỏi gợi mở ở cuối văn bản.
+  + Bắt đầu câu trả lời ngay lập tức bằng gạch đầu dòng đầu tiên của nội dung chính.
+[KẾT THÚC NỘI DUNG PROMPT TỐI ƯU]
+BƯỚC 3: KẾT QUẢ PHẢN HỒI MẪU CỦA AI SAU KHI CHẠY PROMPT TỐI ƯU
+* Khung cấu trúc CREATE:
+  - Là mô hình chuẩn hóa câu lệnh gồm 6 thành phần: Character, Request, Examples, Adjustments, Type of Output, Extras.
+  - Giúp cung cấp đầy đủ vai trò, nhiệm vụ, ràng buộc và bối cảnh để AI hiểu chính xác mục tiêu.
+  - Hạn chế tối đa tình trạng AI trả lời chung chung, sai lệch yêu cầu nghiệp vụ.
+* Kỹ thuật Few-shot Prompting:
+  - Là phương pháp cung cấp sẵn từ 2 đến 5 ví dụ mẫu (cặp Input - Output) ngay trong câu lệnh.
+  - Giúp AI học nhanh quy luật xử lý, văn phong và cách phân loại dữ liệu đặc thù.
+  - Nâng cao độ chính xác khi xử lý các tác vụ phức tạp mà không cần tinh chỉnh lại mô hình.
+* Kỹ thuật Ép định dạng đầu ra (JSON/Table):
+  - Là việc dùng từ khóa ràng buộc bắt buộc AI xuất dữ liệu theo cấu trúc mã JSON hoặc bảng Markdown.
+  - Giúp dữ liệu đầu ra đồng nhất, dễ đọc, dễ đối chiếu hoặc tích hợp trực tiếp vào hệ thống phần mềm.
+  - Loại bỏ hoàn toàn các đoạn văn bản giải thích dư thừa xung quanh dữ liệu chính.
